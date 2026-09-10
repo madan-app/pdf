@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDFKit — Your PDF &amp; Image Toolkit. Simple. Fast. Private.</title>
+<meta name="description" content="Merge, split, compress, convert and edit PDFs and images — entirely in your browser. Your files never leave your device.">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- Google AdSense (replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<div class="ad-leaderboard" data-ad="leaderboard"></div>
+
+<section class="hero">
+  <div class="container">
+    <span class="privacy-badge">🔒 Your files never leave your device</span>
+    <h1>Your <span class="accent-text">PDF &amp; Image</span> Toolkit</h1>
+    <p class="tagline">Simple. Fast. Private.</p>
+    <div class="hero-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="toolSearch" placeholder="Search for a tool… (e.g. merge, compress, collage)">
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <section class="section" id="popular">
+    <div class="section-head">
+      <h2>⭐ Popular Tools</h2>
+      <p>The most-used tools on PDFKit</p>
+    </div>
+    <div class="tool-grid" id="popularGrid"></div>
+  </section>
+
+  <div class="ad-inline" data-ad="inline"></div>
+
+  <section class="section" id="pdf-tools">
+    <div class="section-head">
+      <h2>📄 PDF Tools</h2>
+      <p>Organize, convert, edit and secure your PDFs</p>
+    </div>
+    <div class="tool-grid" id="pdfGrid"></div>
+  </section>
+
+  <section class="section" id="image-tools">
+    <div class="section-head">
+      <h2>🖼️ Image Tools</h2>
+      <p>Collage, resize, compress and convert images</p>
+    </div>
+    <div class="tool-grid" id="imgGrid"></div>
+  </section>
+
+  <div class="ad-inline" data-ad="inline"></div>
+
+  <section class="section" id="about">
+    <div class="section-head"><h2>Why PDFKit?</h2></div>
+    <div class="tool-grid">
+      <div class="tool-card"><div class="icon brand">⚡</div><h3>Fast</h3><p>Runs instantly in your browser — no waiting on uploads or servers.</p></div>
+      <div class="tool-card"><div class="icon brand">🔒</div><h3>Private</h3><p>Files are processed locally on your device and never transmitted anywhere.</p></div>
+      <div class="tool-card"><div class="icon brand">💸</div><h3>Free</h3><p>No sign-up, no watermarks, no limits on how many files you process.</p></div>
+      <div class="tool-card"><div class="icon brand">📱</div><h3>Works everywhere</h3><p>Desktop, laptop, tablet, Android and iPhone — fully responsive.</p></div>
+    </div>
+  </section>
+</div>
+
+<footer id="site-footer"></footer>
+
+<script src="assets/js/common.js"></script>
+<script>
+function cardHTML(t){
+  const iconClass = t.cat === "pdf" ? "pdf" : "img";
+  const href = `tools/${t.id}.html`;
+  return `
+  <a class="tool-card" href="${href}" data-name="${t.name.toLowerCase()}">
+    ${t.badge ? `<span class="badge">${t.badge}</span>` : (t.soon ? `<span class="badge soon">Soon</span>` : "")}
+    <div class="icon ${iconClass}">${t.icon}</div>
+    <h3>${t.name}</h3>
+    <p>${t.desc}</p>
+  </a>`;
+}
+
+function renderGrids(){
+  document.getElementById("popularGrid").innerHTML = TOOLS.filter(t=>t.popular).map(cardHTML).join("");
+  document.getElementById("pdfGrid").innerHTML = TOOLS.filter(t=>t.cat==="pdf").map(cardHTML).join("");
+  document.getElementById("imgGrid").innerHTML = TOOLS.filter(t=>t.cat==="img").map(cardHTML).join("");
+}
+renderGrids();
+
+document.getElementById("toolSearch").addEventListener("input", e=>{
+  const q = e.target.value.trim().toLowerCase();
+  document.querySelectorAll(".tool-card[data-name]").forEach(card=>{
+    card.style.display = !q || card.dataset.name.includes(q) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

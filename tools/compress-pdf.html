@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compress PDF — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel" id="sidePanel" style="display:none">
+      <h3>Compression Settings</h3>
+      <div class="field">
+        <label>Compression level</label>
+        <div class="seg" id="levelSeg">
+          <button data-v="high" class="active">High quality</button>
+          <button data-v="medium">Balanced</button>
+          <button data-v="low">Smallest size</button>
+        </div>
+        <div class="hint">PDFKit compresses by re-encoding page images. Higher compression = smaller file, lower visual fidelity.</div>
+      </div>
+      <button class="btn btn-primary btn-block" id="compressBtn">🗜️ Compress PDF</button>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">🗜️</div>
+        <h3>Select a PDF to compress</h3>
+        <p>Drag &amp; drop a PDF here, or click to browse.</p>
+        <input type="file" id="fileInput" accept="application/pdf">
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/compress-pdf.js"></script>
+</body>
+</html>

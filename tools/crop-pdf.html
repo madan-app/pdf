@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crop PDF — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel" id="sidePanel" style="display:none">
+      <h3>Crop Margins (%)</h3>
+      <div class="field"><label>Top — <span id="topVal">0</span>%</label><input type="range" id="cropTop" min="0" max="40" value="0"></div>
+      <div class="field"><label>Bottom — <span id="bottomVal">0</span>%</label><input type="range" id="cropBottom" min="0" max="40" value="0"></div>
+      <div class="field"><label>Left — <span id="leftVal">0</span>%</label><input type="range" id="cropLeft" min="0" max="40" value="0"></div>
+      <div class="field"><label>Right — <span id="rightVal">0</span>%</label><input type="range" id="cropRight" min="0" max="40" value="0"></div>
+      <div class="field">
+        <label>Apply to</label>
+        <div class="seg" id="scopeSeg">
+          <button data-v="all" class="active">All pages</button>
+          <button data-v="first">First page only</button>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="applyBtn">📐 Crop PDF</button>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">📐</div>
+        <h3>Select a PDF to crop</h3>
+        <p>Drag &amp; drop a PDF here, or click to browse.</p>
+        <input type="file" id="fileInput" accept="application/pdf">
+      </div>
+
+      <div class="preview-stage" id="previewWrap" style="display:none">
+        <div style="position:relative;display:inline-block">
+          <canvas id="previewCanvas" style="max-width:100%;box-shadow:var(--shadow-md)"></canvas>
+          <div id="cropOverlay" style="position:absolute;border:2px solid var(--brand);background:rgba(79,70,229,.08);pointer-events:none"></div>
+        </div>
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/crop-pdf.js"></script>
+</body>
+</html>

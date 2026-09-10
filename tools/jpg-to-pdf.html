@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPG to PDF — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel">
+      <h3>PDF Settings</h3>
+      <div class="field">
+        <label>Image quality</label>
+        <div class="seg" id="qualitySeg">
+          <button data-v="high" class="active">High</button>
+          <button data-v="medium">Medium</button>
+          <button data-v="low">Low</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Page size</label>
+        <div class="seg" id="pageSizeSeg">
+          <button data-v="a4" class="active">A4</button>
+          <button data-v="letter">Letter</button>
+          <button data-v="original">Original</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Orientation</label>
+        <div class="seg" id="orientationSeg">
+          <button data-v="portrait" class="active">Portrait</button>
+          <button data-v="landscape">Landscape</button>
+          <button data-v="auto">Auto</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Margins</label>
+        <div class="seg" id="marginSeg">
+          <button data-v="none" class="active">None</button>
+          <button data-v="small">Small</button>
+          <button data-v="normal">Normal</button>
+        </div>
+      </div>
+      <div class="field toggle-row">
+        <label style="margin:0">Image compression</label>
+        <label class="switch"><input type="checkbox" id="compressToggle" checked><span class="slider"></span></label>
+      </div>
+      <div class="field">
+        <label>Layout</label>
+        <div class="seg" id="layoutSeg">
+          <button data-v="combine" class="active">Combine into one PDF</button>
+          <button data-v="one-per-page">One image / page</button>
+        </div>
+        <div class="hint">"Combine" merges all images as sequential pages of one PDF (same as one-per-page for multiple images) — toggle affects single-image handling and export naming.</div>
+      </div>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">🖼️</div>
+        <h3>Add images</h3>
+        <p>Drag &amp; drop JPG/PNG images, or click to browse.</p>
+        <input type="file" id="fileInput" accept="image/*" multiple>
+      </div>
+
+      <div class="file-list" id="fileList"></div>
+
+      <div class="preview-stage" id="previewStage" style="display:none;margin-top:20px">
+        <div class="preview-empty" id="previewLoading">Live preview</div>
+        <canvas id="previewCanvas" style="display:none;max-width:100%;box-shadow:var(--shadow-md)"></canvas>
+        <p style="font-size:12.5px;color:var(--text-faint)" id="previewCaption"></p>
+      </div>
+
+      <div class="actions-row" id="actionsRow" style="display:none">
+        <button class="btn btn-download" id="createBtn" style="flex:1">📄 Create PDF</button>
+      </div>
+
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/jpg-to-pdf.js"></script>
+</body>
+</html>

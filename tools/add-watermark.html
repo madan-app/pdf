@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Watermark — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel" id="sidePanel" style="display:none">
+      <h3>Watermark Settings</h3>
+      <div class="field">
+        <label>Text</label>
+        <textarea id="wmText">CONFIDENTIAL</textarea>
+      </div>
+      <div class="field">
+        <label>Opacity</label>
+        <input type="range" id="wmOpacity" min="5" max="100" value="30">
+        <div class="range-row"><span>5%</span><span id="wmOpacityVal">30%</span><span>100%</span></div>
+      </div>
+      <div class="field">
+        <label>Rotation</label>
+        <input type="range" id="wmRotate" min="0" max="360" value="45">
+        <div class="range-row"><span>0°</span><span id="wmRotateVal">45°</span><span>360°</span></div>
+      </div>
+      <div class="field">
+        <label>Font size</label>
+        <input type="range" id="wmSize" min="12" max="120" value="48">
+        <div class="range-row"><span>12</span><span id="wmSizeVal">48</span><span>120</span></div>
+      </div>
+      <div class="field">
+        <label>Color</label>
+        <div class="swatches" id="wmColors">
+          <div class="swatch active" style="background:#e0455e" data-c="0.878,0.271,0.369"></div>
+          <div class="swatch" style="background:#4f46e5" data-c="0.310,0.275,0.898"></div>
+          <div class="swatch" style="background:#111111" data-c="0.07,0.07,0.07"></div>
+          <div class="swatch" style="background:#0ea5a5" data-c="0.055,0.647,0.647"></div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="applyBtn">💧 Add Watermark</button>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">💧</div>
+        <h3>Select a PDF</h3>
+        <p>Drag &amp; drop a PDF here, or click to browse.</p>
+        <input type="file" id="fileInput" accept="application/pdf">
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/add-watermark.js"></script>
+</body>
+</html>

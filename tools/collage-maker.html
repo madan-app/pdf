@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collage Maker — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel" style="max-height:calc(100vh - 100px);overflow-y:auto">
+
+      <h3>1 · Images</h3>
+      <div class="dropzone" id="dropzone" style="padding:24px 14px">
+        <div class="dz-icon" style="font-size:28px">📷</div>
+        <h3 style="font-size:14px">Add Images</h3>
+        <p style="font-size:12px">Drag &amp; drop JPG/PNG, or click</p>
+        <input type="file" id="fileInput" accept="image/*" multiple>
+      </div>
+      <div class="thumb-grid" id="thumbGrid" style="grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:8px;margin-top:12px"></div>
+
+      <h3 style="margin-top:22px">2 · Page Size</h3>
+      <div class="field">
+        <div class="chip-grid" id="pageSizeChips">
+          <button class="chip active" data-v="a4">A4</button>
+          <button class="chip" data-v="a3">A3</button>
+          <button class="chip" data-v="a5">A5</button>
+          <button class="chip" data-v="letter">Letter</button>
+          <button class="chip" data-v="legal">Legal</button>
+          <button class="chip" data-v="original">Custom</button>
+        </div>
+      </div>
+      <div class="field" id="customSizeField" style="display:none">
+        <label>Custom size (mm)</label>
+        <div style="display:flex;gap:8px">
+          <input type="number" id="customW" value="210" min="20">
+          <input type="number" id="customH" value="297" min="20">
+        </div>
+      </div>
+      <div class="field">
+        <label>Orientation</label>
+        <div class="seg" id="orientSeg"><button data-v="portrait" class="active">Portrait</button><button data-v="landscape">Landscape</button></div>
+      </div>
+
+      <h3 style="margin-top:22px">3 · Images per Page</h3>
+      <div class="field">
+        <div class="chip-grid" id="perPageChips">
+          <button class="chip" data-v="1">1</button>
+          <button class="chip" data-v="2">2</button>
+          <button class="chip active" data-v="4">4</button>
+          <button class="chip" data-v="6">6</button>
+          <button class="chip" data-v="9">9</button>
+          <button class="chip" data-v="12">12</button>
+          <button class="chip" data-v="custom">Custom</button>
+        </div>
+      </div>
+      <div class="field" id="customGridField" style="display:none">
+        <label>Rows × Columns</label>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div class="number-stepper"><button id="rowsMinus">−</button><input type="number" id="rowsInput" value="2" min="1" max="8"><button id="rowsPlus">+</button></div>
+          <span>×</span>
+          <div class="number-stepper"><button id="colsMinus">−</button><input type="number" id="colsInput" value="2" min="1" max="8"><button id="colsPlus">+</button></div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:22px">4 · Layout</h3>
+      <div class="field">
+        <label>Image spacing (mm) — <span id="spacingVal">4</span></label>
+        <input type="range" id="spacing" min="0" max="20" value="4">
+      </div>
+      <div class="field">
+        <label>Page margin (mm) — <span id="marginVal">8</span></label>
+        <input type="range" id="pageMargin" min="0" max="30" value="8">
+      </div>
+      <div class="field">
+        <label>Image fit</label>
+        <div class="seg" id="fitSeg"><button data-v="cover" class="active">Cover</button><button data-v="contain">Contain</button></div>
+      </div>
+      <div class="field">
+        <label>Rounded corners — <span id="roundedVal">0</span>px</label>
+        <input type="range" id="rounded" min="0" max="40" value="0">
+      </div>
+      <div class="field">
+        <label>Background</label>
+        <div class="swatches" id="bgSwatches">
+          <div class="swatch active" style="background:#ffffff;border-color:#ccc" data-v="#ffffff"></div>
+          <div class="swatch" style="background:#000000" data-v="#000000"></div>
+          <div class="swatch" style="background:#f5f0e6" data-v="#f5f0e6"></div>
+          <div class="swatch" style="background:#4f46e5" data-v="#4f46e5"></div>
+        </div>
+      </div>
+      <div class="field toggle-row">
+        <label style="margin:0">Image border</label>
+        <label class="switch"><input type="checkbox" id="borderToggle"><span class="slider"></span></label>
+      </div>
+      <div class="field" id="borderThicknessField" style="display:none">
+        <label>Border thickness — <span id="borderVal">3</span>px</label>
+        <input type="range" id="borderThickness" min="1" max="12" value="3">
+      </div>
+      <div class="field toggle-row">
+        <label style="margin:0">Show filename caption</label>
+        <label class="switch"><input type="checkbox" id="captionToggle"><span class="slider"></span></label>
+      </div>
+
+      <h3 style="margin-top:22px">5 · Export Format</h3>
+      <div class="field">
+        <div class="seg" id="exportSeg">
+          <button data-v="pdf" class="active">📄 PDF</button>
+          <button data-v="jpeg">🖼 JPEG</button>
+          <button data-v="png">🖼 PNG</button>
+        </div>
+      </div>
+
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="preview-stage">
+        <div class="collage-canvas-wrap"><canvas id="collageCanvas"></canvas></div>
+        <p style="font-size:12.5px;color:var(--text-faint)" id="pageInfo">Add images to see a live preview</p>
+        <div class="seg" id="pageNav" style="display:none;max-width:220px"></div>
+      </div>
+      <div class="actions-row">
+        <button class="btn btn-download" id="createBtn" style="flex:1">🧩 Create Collage</button>
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/collage-maker.js"></script>
+</body>
+</html>

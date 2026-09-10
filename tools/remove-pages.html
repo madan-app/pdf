@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remove PDF Pages — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace no-sidebar">
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">🗑️</div>
+        <h3>Select a PDF</h3>
+        <p id="hintText">Drag &amp; drop a PDF here, or click to browse.</p>
+        <input type="file" id="fileInput" accept="application/pdf">
+      </div>
+
+      <div class="actions-row" id="actionsRow" style="display:none">
+        <button class="btn btn-primary" id="actionBtn"></button>
+        <button class="btn btn-secondary" id="selectAllBtn">Select all</button>
+        <button class="btn btn-secondary" id="selectNoneBtn">Select none</button>
+      </div>
+
+      <div class="thumb-grid" id="thumbGrid"></div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script>const TOOL_MODE = "remove";</script>
+<script src="../assets/js/tools/page-organizer.js"></script>
+</body>
+</html>

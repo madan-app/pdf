@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Forms — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace no-sidebar">
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">🧾</div>
+        <h3>Select a fillable PDF form</h3>
+        <p>Drag &amp; drop a PDF with form fields (AcroForm), or click to browse.</p>
+        <input type="file" id="fileInput" accept="application/pdf">
+      </div>
+
+      <div class="panel" id="formPanel" style="display:none;margin-top:18px">
+        <h3>Form Fields</h3>
+        <div id="fieldsList" style="display:flex;flex-direction:column;gap:16px"></div>
+      </div>
+
+      <div class="actions-row" id="actionsRow" style="display:none">
+        <button class="btn btn-primary" id="fillBtn">🧾 Fill &amp; Flatten PDF</button>
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/pdf-forms.js"></script>
+</body>
+</html>

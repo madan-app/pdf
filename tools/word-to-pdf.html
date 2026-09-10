@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word to PDF — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace no-sidebar">
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">📝</div>
+        <h3>Select a Word document (.docx)</h3>
+        <p>Drag &amp; drop a .docx file here, or click to browse.</p>
+        <input type="file" id="fileInput" accept=".docx">
+      </div>
+      <p class="hint" style="color:var(--text-faint);font-size:12.5px">Note: text, headings, lists, tables and images convert well. Complex layouts (columns, text boxes) may render simplified. Legacy .doc files aren't supported — please save as .docx first.</p>
+
+      <div class="preview-stage" id="previewStage" style="display:none"></div>
+      <div class="actions-row" id="actionsRow" style="display:none">
+        <button class="btn btn-download" id="exportBtn" style="flex:1">📄 Export as PDF</button>
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/word-to-pdf.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resize Image — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel" id="sidePanel" style="display:none">
+      <h3>Resize Settings</h3>
+      <div class="field">
+        <label>Mode</label>
+        <div class="seg" id="modeSeg">
+          <button data-v="pixels" class="active">Exact size (px)</button>
+          <button data-v="percent">Percentage</button>
+        </div>
+      </div>
+      <div class="field" id="pxFields">
+        <label>Width × Height (px)</label>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="number" id="widthInput" placeholder="Width">
+          <span>×</span>
+          <input type="number" id="heightInput" placeholder="Height">
+        </div>
+      </div>
+      <div class="field" id="pctField" style="display:none">
+        <label>Scale — <span id="pctVal">50</span>%</label>
+        <input type="range" id="pctInput" min="5" max="200" value="50">
+      </div>
+      <div class="field toggle-row">
+        <label style="margin:0">Lock aspect ratio</label>
+        <label class="switch"><input type="checkbox" id="lockAspect" checked><span class="slider"></span></label>
+      </div>
+      <button class="btn btn-primary btn-block" id="resizeBtn">📏 Resize Image</button>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">📏</div>
+        <h3>Select an image</h3>
+        <p>Drag &amp; drop a JPG/PNG/WebP, or click to browse.</p>
+        <input type="file" id="fileInput" accept="image/*">
+      </div>
+      <div class="preview-stage" id="previewStage" style="display:none">
+        <canvas id="previewCanvas" style="max-width:100%;box-shadow:var(--shadow-md)"></canvas>
+        <p style="font-size:12.5px;color:var(--text-faint)" id="dimsCaption"></p>
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/resize-image.js"></script>
+</body>
+</html>

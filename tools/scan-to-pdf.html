@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scan to PDF — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel">
+      <h3>Scan Settings</h3>
+      <div class="field">
+        <label>Page size</label>
+        <select id="pageSizeSel">
+          <option value="a4">A4</option>
+          <option value="letter">Letter</option>
+          <option value="original">Original (camera aspect)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Color mode</label>
+        <div class="seg" id="colorSeg">
+          <button data-v="color" class="active">Color</button>
+          <button data-v="bw">B &amp; White</button>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="buildBtn">📄 Create PDF (<span id="capCount">0</span>)</button>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="preview-stage" id="cameraStage">
+        <video id="camVideo" autoplay playsinline style="width:100%;max-width:480px;border-radius:10px;background:#000"></video>
+        <div class="actions-row">
+          <button class="btn btn-primary" id="startCamBtn">📷 Start Camera</button>
+          <button class="btn btn-secondary" id="captureBtn" style="display:none">📸 Capture Page</button>
+          <label class="btn btn-outline" style="cursor:pointer">
+            📁 Upload photo instead
+            <input type="file" id="uploadInput" accept="image/*" multiple style="display:none">
+          </label>
+        </div>
+        <p class="hint" style="text-align:center;color:var(--text-faint);font-size:12.5px">Camera access requires HTTPS (or localhost) and browser permission. No image ever leaves your device.</p>
+      </div>
+
+      <div class="thumb-grid" id="thumbGrid"></div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/scan-to-pdf.js"></script>
+</body>
+</html>

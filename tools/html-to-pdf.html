@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML to PDF — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel">
+      <h3>Source</h3>
+      <div class="field">
+        <label>Upload an .html file</label>
+        <input type="file" id="htmlFileInput" accept=".html,.htm,text/html">
+      </div>
+      <div class="field">
+        <label>…or paste HTML</label>
+        <textarea id="htmlInput" style="min-height:140px" placeholder="&lt;h1&gt;Hello world&lt;/h1&gt;"></textarea>
+      </div>
+      <div class="field">
+        <label>Page size</label>
+        <div class="seg" id="pageSizeSeg"><button data-v="a4" class="active">A4</button><button data-v="letter">Letter</button></div>
+      </div>
+      <div class="field">
+        <label>Orientation</label>
+        <div class="seg" id="orientSeg"><button data-v="portrait" class="active">Portrait</button><button data-v="landscape">Landscape</button></div>
+      </div>
+      <button class="btn btn-primary btn-block" id="renderBtn">🌐 Render Preview</button>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="preview-stage" id="previewStage">
+        <div class="preview-empty"><div class="big">🌐</div>Paste or upload HTML, then click "Render Preview"</div>
+      </div>
+      <div class="actions-row" id="actionsRow" style="display:none">
+        <button class="btn btn-download" id="exportBtn" style="flex:1">📄 Export as PDF</button>
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/html-to-pdf.js"></script>
+</body>
+</html>

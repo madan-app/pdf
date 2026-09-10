@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compress Image — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel" id="sidePanel" style="display:none">
+      <h3>Compression Settings</h3>
+      <div class="field">
+        <label>Quality — <span id="qVal">70</span>%</label>
+        <input type="range" id="qInput" min="5" max="100" value="70">
+        <div class="hint">Lower quality = smaller file size.</div>
+      </div>
+      <div class="field">
+        <label>Output format</label>
+        <div class="seg" id="fmtSeg"><button data-v="jpeg" class="active">JPEG</button><button data-v="webp">WebP</button></div>
+      </div>
+      <button class="btn btn-primary btn-block" id="compressBtn">🗜️ Compress Image</button>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">🗜️</div>
+        <h3>Select an image</h3>
+        <p>Drag &amp; drop a JPG/PNG, or click to browse.</p>
+        <input type="file" id="fileInput" accept="image/*">
+      </div>
+      <div class="preview-stage" id="previewStage" style="display:none">
+        <img id="previewImg" style="max-width:100%;max-height:400px;box-shadow:var(--shadow-md);border-radius:6px">
+        <p style="font-size:12.5px;color:var(--text-faint)" id="sizeCaption"></p>
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/compress-image.js"></script>
+</body>
+</html>

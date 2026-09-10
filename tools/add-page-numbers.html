@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Page Numbers — PDFKit</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<div class="tool-header" id="toolHeader"></div>
+
+<div class="container">
+  <div class="workspace" id="workspace">
+    <aside class="panel" id="sidePanel" style="display:none">
+      <h3>Page Number Settings</h3>
+      <div class="field">
+        <label>Position</label>
+        <div class="chip-grid" id="posChips">
+          <button class="chip" data-v="bottom-left">Bottom Left</button>
+          <button class="chip active" data-v="bottom-center">Bottom Center</button>
+          <button class="chip" data-v="bottom-right">Bottom Right</button>
+          <button class="chip" data-v="top-left">Top Left</button>
+          <button class="chip" data-v="top-center">Top Center</button>
+          <button class="chip" data-v="top-right">Top Right</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Format</label>
+        <select id="formatSel">
+          <option value="n">1, 2, 3…</option>
+          <option value="page-n">Page 1, Page 2…</option>
+          <option value="n-of-total">1 / 10, 2 / 10…</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Start at</label>
+        <input type="number" id="startAt" value="1" min="1">
+      </div>
+      <div class="field">
+        <label>Font size</label>
+        <input type="range" id="fontSize" min="8" max="24" value="11">
+        <div class="range-row"><span>8</span><span id="fontSizeVal">11</span><span>24</span></div>
+      </div>
+      <button class="btn btn-primary btn-block" id="applyBtn">🔢 Add Page Numbers</button>
+      <div class="ad-sidebar" data-ad="sidebar"></div>
+    </aside>
+
+    <div class="main-area">
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon">🔢</div>
+        <h3>Select a PDF</h3>
+        <p>Drag &amp; drop a PDF here, or click to browse.</p>
+        <input type="file" id="fileInput" accept="application/pdf">
+      </div>
+      <div class="preview-stage" id="stage" style="display:none;margin-top:20px"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/tools/add-page-numbers.js"></script>
+</body>
+</html>
